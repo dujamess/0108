@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:25:30 by khmessah          #+#    #+#             */
-/*   Updated: 2024/07/29 15:31:42 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/02 00:46:48 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,11 @@ char	*after_d(t_info *info)
 	char	*str;
 
 	i = 0;
+	if (info->line[info->count] && info->line[info->count + 1] == '?' && info->quotes != '\'')
+	{
+		info->count += 2;
+		return (ft_itoa(g_general->exit_status, info));
+	}
 	while (info->line[info->count + i] && !alpha_n(info->line[info->count + i])
 		&& dollar(info->line[info->count + i], info))
 	{

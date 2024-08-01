@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 18:02:36 by khmessah          #+#    #+#             */
-/*   Updated: 2024/08/01 18:26:01 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/01 23:49:01 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	print_file_info(char *path)
 	{
 		stat(path, &file_stat);
 		if (S_ISREG(file_stat.st_mode) && access(path, X_OK) != -1)
-			return (0);
+			return (2);
 		else if (S_ISREG(file_stat.st_mode) && access(path, X_OK) == -1)
 		{
 			ft_putstr(path, 2);

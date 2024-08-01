@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 08:34:28 by mmondad           #+#    #+#             */
-/*   Updated: 2024/08/01 18:01:30 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/02 00:44:31 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,5 @@ char	*expand(t_info *info, int i, int singl_q)
 			part = b_dollar(info);
 		str = ft_strjoin(str, part, info);
 	}
-	return (exit_status(str, info));
+	return (str);
 }

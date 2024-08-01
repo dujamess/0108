@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validators.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondad <mmondad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 09:40:27 by mmondad           #+#    #+#             */
-/*   Updated: 2024/06/02 11:20:19 by mmondad          ###   ########.fr       */
+/*   Updated: 2024/08/02 00:44:51 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	check_quotes(char *line, t_info *info)
 	int	i;
 
 	i = 0;
-	while (line[i])
+	while (line && line[i])
 		set_val(line[i++], info);
 }
 

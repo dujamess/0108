@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 15:57:53 by mmondad           #+#    #+#             */
-/*   Updated: 2024/08/01 21:25:55 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/01 23:43:40 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ void	run_minishell(t_variable **my_env, t_info *info,
 		save_pwd(info);
 		if (info->plist->reds)
 		{
+			info->fd0 = 0;
+			info->fd1 = 1;
 			g_general->red = 1;
 			command_builtin_redirection(info, *my_env, &count);
-			printf("f0 : %d | fd1 : %d | red : %d | error : %d\n", info->fd0, info->fd1, g_general->red, g_general->error_red);
 		}
 		else
 			run_builtin_final(my_env, info, count);
