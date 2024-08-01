@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:29:23 by khmessah          #+#    #+#             */
-/*   Updated: 2024/08/01 00:33:16 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:17:15 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,11 @@ void	open_o_red(t_info *info, int *ptr)
 				O_WRONLY | O_CREAT | O_TRUNC, 0666);
 		if (info->fd1 == -1)
 			ft_perror();
-		dup2(info->fd1, STDOUT_FILENO);
-		close(info->fd1);
+		else
+		{
+			dup2(info->fd1, STDOUT_FILENO);
+			close(info->fd1);	
+		}
 	}
 }
 

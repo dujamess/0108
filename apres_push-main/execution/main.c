@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 15:57:53 by mmondad           #+#    #+#             */
-/*   Updated: 2024/08/01 00:29:22 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:23:37 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	run_minishell(t_variable **my_env, t_info *info,
 			run_builtin_final(my_env, info, count);
 		return ;
 	}
-	if (!g_general->exit_status)
+	else if (!g_general->exit_status)
 		execution_cmd(*my_env, info, env_exec);
 }
 
