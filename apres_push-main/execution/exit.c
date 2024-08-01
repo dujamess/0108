@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:50:13 by khmessah          #+#    #+#             */
-/*   Updated: 2024/07/31 23:05:56 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:33:42 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,12 @@ void	exit_multiple(char **av, int ac)
 	}
 	if (ac == i || (ft_isdigit1(av[1]) == 1))
 	{
-		ft_putstr("exit\n", 2);
-		write(2, "exit: too many arguments\n", 26);
+		ft_putstr(" too many arguments\n", 2);
 		g_general->exit_status = 1;
 	}
 	else
 	{
-		write(2, "exit: ", 7);
-		write(2, av[1], ft_strlen(av[1]));
-		write(2, ": numeric argument required\n", 29);
+		ft_putstr(" numeric argument required\n", 2);
 		g_general->exit_status = 2;
 		free_all(g_general->info);
 		exit(g_general->exit_status);
@@ -57,9 +54,8 @@ void	exit_multiple(char **av, int ac)
 
 void	print_exit(char **av)
 {
-	write(2, "exit: ", 7);
-	write(2, av[1], ft_strlen(av[1]));
-	write(2, ": numeric argument required\n", 29);
+	(void)av;
+	ft_putstr(" numeric argument required\n", 2);
 }
 
 void	exit_error(char **av)

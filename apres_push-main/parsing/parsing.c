@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:53:12 by mmondad           #+#    #+#             */
-/*   Updated: 2024/07/30 23:50:45 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:56:52 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ int	parsing(t_info *info)
 	info->line = expand(info, 1, 0);
 	info->quotes = 0;
 	check_quotes(info->line, info);
-	g_general->exit_status = 0;
 	info->quotes_tmp = info->quotes;
 	info->flag = 0;
 	ft_split(info);

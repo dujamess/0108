@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:31:07 by khmessah          #+#    #+#             */
-/*   Updated: 2024/08/01 00:29:51 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/01 21:10:59 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_stat(t_info *info, char *s)
 {
 	int	j;
 
+	(void)info;
 	j = print_file_info(s);
 	if (j == 0)
 	{
@@ -56,12 +57,11 @@ void	ft_stat(t_info *info, char *s)
 
 void	ft_perror(void)
 {
-	perror("open");
+	perror("minishell");
 	g_general->exit_status = 1;
+	g_general->error_red = 1;
 	if (g_general->red != 1)
 		exit(EXIT_FAILURE);
-	else
-		g_general->error_red = 1;
 }
 
 int	ft_atoi1(const char *str)

@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 15:11:43 by khmessah          #+#    #+#             */
-/*   Updated: 2024/07/31 21:12:07 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:21:15 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	wait_function(int fd, pid_t pid)
 		g_general->exit_status = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
 		g_general->exit_status = 128 + WTERMSIG(status);
-	
 }
 
 void	execution_cmd(t_variable *env, t_info *info, char **en)
@@ -89,7 +88,7 @@ void	execution_cmd(t_variable *env, t_info *info, char **en)
 	}
 	else
 	{
-		close(fd[1]);	
+		close(fd[1]);
 		wait_function(fd[0], pid);
 	}
 }

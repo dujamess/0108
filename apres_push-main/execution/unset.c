@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 19:35:53 by khmessah          #+#    #+#             */
-/*   Updated: 2024/07/31 01:19:49 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:32:34 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,10 @@ void	check_error_max_exit(char **av)
 	else if ((ft_strlen(av[1]) - skip_sero(av[1]) >= 20)
 		&& (av[1][0] == '-') && check_size_max(av[1]) != 0)
 		exit_error(av);
+}
+
+void	close_fd(t_info *info)
+{
+	dup2(info->fd1, STDOUT_FILENO);
+	close(info->fd1);
 }

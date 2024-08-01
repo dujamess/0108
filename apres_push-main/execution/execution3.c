@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:29:23 by khmessah          #+#    #+#             */
-/*   Updated: 2024/08/01 17:17:15 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/01 20:58:46 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ void	open_o_red(t_info *info, int *ptr)
 		if (info->fd1 == -1)
 			ft_perror();
 		else
-		{
-			dup2(info->fd1, STDOUT_FILENO);
-			close(info->fd1);	
-		}
+			close_fd(info);
 	}
 }
 
@@ -86,7 +83,8 @@ void	cherch_output(t_info *info)
 	int	i;
 
 	i = 0;
-	while (info->plist->reds && info->plist->reds[i] && g_general->error_red == 0)
+	while (info->plist->reds
+		&& info->plist->reds[i] && g_general->error_red == 0)
 	{
 		if (info->plist->types[i] == O_RED)
 			open_o_red(info, &i);

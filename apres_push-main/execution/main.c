@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 15:57:53 by mmondad           #+#    #+#             */
-/*   Updated: 2024/08/01 17:23:37 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/01 21:25:55 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	run_minishell(t_variable **my_env, t_info *info,
 		{
 			g_general->red = 1;
 			command_builtin_redirection(info, *my_env, &count);
+			printf("f0 : %d | fd1 : %d | red : %d | error : %d\n", info->fd0, info->fd1, g_general->red, g_general->error_red);
 		}
 		else
 			run_builtin_final(my_env, info, count);
@@ -53,7 +54,10 @@ void	run1_minishell(t_info *info, t_variable **my_env)
 	free_d((*my_env)->env_exec);
 	(*my_env)->env_exec = return_env(*my_env);
 	if (!check && info->plist)
+	{
+		g_general->exit_status = 0;
 		run_minishell(my_env, info, (*my_env)->env_exec);
+	}
 }
 
 void	minishell_execut(t_info *info)
@@ -69,12 +73,14 @@ void	minishell_execut(t_info *info)
 
 void	my_minishell(t_info *info, t_variable *my_env)
 {
+	g_general->fd0 = dup(0);
+	g_general->fd1 = dup(1);
 	while (1)
 	{
 		g_general->red = 0;
 		g_general->error_red = 0;
-		dup2(g_general->fd0,0);
-		dup2(g_general->fd1,1);
+		dup2(g_general->fd0, 0);
+		dup2(g_general->fd1, 1);
 		signals();
 		init_info(my_env, info);
 		run1_minishell(info, &my_env);
@@ -96,8 +102,6 @@ int	main(int argc, char **argv, char **penv)
 	info.tmp_line = NULL;
 	init_global_var(&info);
 	my_env = set_env(my_env, penv);
-	g_general->fd0 = dup(0);
-	g_general->fd1 = dup(1);
 	my_env->env_exec = NULL;
 	info.path = malloc(sizeof(t_path));
 	if (!info.path)

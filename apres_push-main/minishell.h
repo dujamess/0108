@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:01:38 by khmessah          #+#    #+#             */
-/*   Updated: 2024/08/01 00:28:32 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/01 21:12:16 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -331,4 +331,5 @@ int			skip_sero(char *str);
 void		check_error_max_exit(char **av);
 int			ft_isdigit1(char *c);
 void		exit_error(char **av);
+void		close_fd(t_info *info);
 #endif

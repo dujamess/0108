@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 18:17:36 by khmessah          #+#    #+#             */
-/*   Updated: 2024/07/31 23:07:03 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:47:15 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,7 @@ int	builtin_cd(int ac, char **av, t_variable *my_env, t_pwd *var)
 		print_cd(ac, av, my_env, var);
 	else
 	{
-		ft_putstr("minishell0: ", 2);
-		ft_putstr(av[0], 2);
-		write(2, ": too many arguments\n", 22);
+		ft_putstr(" too many arguments\n", 2);
 		g_general->exit_status = 1;
 	}
 	return (0);

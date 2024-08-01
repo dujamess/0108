@@ -6,7 +6,7 @@
 /*   By: khmessah <khmessah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 18:02:36 by khmessah          #+#    #+#             */
-/*   Updated: 2024/07/31 23:15:35 by khmessah         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:26:01 by khmessah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,24 @@ void	stx_message(char *token, char c)
 	ft_putstr("'\n", 2);
 }
 
-int	print_file_info(char *path)
+int	print_file_info2(char *path)
 {
-	struct stat	file_stat;
-
-	if ((ft_strchr1(path, '/') != NULL) && (access(path,F_OK) == -1))
+	if ((ft_strchr1(path, '/') != NULL) && (access(path, F_OK) == -1))
 	{
 		ft_putstr(path, 2);
 		ft_putstr(": No such file or directory\n", 2);
 		return (1);
 	}
-	else if (ft_strchr1(path, '/') != NULL && access(path,F_OK) != -1)
+	return (0);
+}
+
+int	print_file_info(char *path)
+{
+	struct stat	file_stat;
+
+	if (print_file_info2(path))
+		return (1);
+	if (ft_strchr1(path, '/') != NULL && access(path, F_OK) != -1)
 	{
 		stat(path, &file_stat);
 		if (S_ISREG(file_stat.st_mode) && access(path, X_OK) != -1)
